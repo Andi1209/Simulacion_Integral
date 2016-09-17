@@ -17,7 +17,8 @@ public class GCMixto {
     
      public void Validar_periodo_mixto() {
        // variables 
-        int a, b, m;
+        double a, b; 
+        double m;
         double x0 = 1;
         double validacion = 0;
         double semilla = 1;
@@ -34,9 +35,9 @@ public class GCMixto {
         double result = 0;
         
         //Se solicitan los datos
-        a = Integer.parseInt(JOptionPane.showInputDialog("Introdusca el valor de A "));
-        b = Integer.parseInt(JOptionPane.showInputDialog("Introdusca el valor de B "));
-        m = Integer.parseInt(JOptionPane.showInputDialog("Introdusca el valor de M "));
+        a = Double.parseDouble(JOptionPane.showInputDialog("Introdusca el valor de A "));
+        b = Double.parseDouble(JOptionPane.showInputDialog("Introdusca el valor de B "));
+        m = Double.parseDouble(JOptionPane.showInputDialog("Introdusca el valor de M "));
 
 
 //Generador de numeros aleatorios
@@ -48,9 +49,9 @@ public class GCMixto {
            
             cont = cont + 1;
             if((cont%2) == 0){
-            x.add((Math.pow((x0/m), 2)));
+            y.add((Math.pow((x0/m), 2)));
             }else{
-            y.add(x0/m);
+            x.add(x0/m);
             }
 //  se valida que no se quede en un loop 
             if(validacion==x0 || cont == m){
