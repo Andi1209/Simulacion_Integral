@@ -14,8 +14,11 @@ public class Hallar_Areabajolacurva {
     /**
      * @param args the command line arguments
      */
+    static GCMixto g = new GCMixto();
     public static void main(String[] args) {
         // TODO code application logic here
+        
+          g.Validar_periodo_mixto();
     }
     
 }
