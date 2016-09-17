@@ -72,7 +72,7 @@ public class GCMixto {
          
          System.out.println(bajocurva+"/"+cont);
          result = ((bajocurva/cont)*1);
-         
+         // Se imprime el resultado
          System.out.println(result);
          
      }
