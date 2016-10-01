@@ -114,7 +114,7 @@ public class GCMixto {
 //            x.add(x0/m);
                 x_replace.add(calculo);
             } else {
-         altura_cuadradotemp = calculavalor(fmayor,array,signo);
+         altura_cuadradotemp = IdentfiDecreCreci ();
         resultado = 0;
       double numero_en_y = normaliza_en_y(altura_cuadradotemp,0,(x0/m));
         resultado = 0;
@@ -140,7 +140,9 @@ public class GCMixto {
         }
         System.out.println(bajocurva);
         
-        altura_cuadrado = calculavalor(fmayor,array,signo);
+      altura_cuadrado = IdentfiDecreCreci();
+        
+        
         
         System.out.println(bajocurva + "/" + (cont / 2));
         result = ((bajocurva / (cont / 2)) * (altura_cuadrado*(fmayor-fmenor)));// (altodelacurva*(mayor-menor))
@@ -201,4 +203,27 @@ public class GCMixto {
         return resultado;
     }
 
+    public double CalcularAreaT (double valorx, double coefi[], String sig[]){
+        double ResulrCalA =0 ;
+        
+        
+        return ResulrCalA;
+    }
+    
+    public double IdentfiDecreCreci (){
+        double resultmayo = 0;
+         double resultfmayor = calculavalor(fmayor,array,signo);
+        resultado = 0;
+        double resultfmenor = calculavalor(fmenor,array,signo);
+        resultado = 0;
+        if(resultfmenor<resultfmayor){
+         resultmayo = resultfmayor;   
+        }else{
+          resultmayo = resultfmenor;   
+        }
+        
+        return resultmayo;
+    }
+    
+    
 }
