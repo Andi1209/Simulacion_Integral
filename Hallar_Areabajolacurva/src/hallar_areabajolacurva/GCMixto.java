@@ -46,6 +46,7 @@ public class GCMixto {
         double bajocurva = 0;
         double arribacurva = 0;
         double result = 0;
+        boolean esnegativa = false;
 
         //Se solicitan los datos
         a = Double.parseDouble(JOptionPane.showInputDialog("Introdusca el valor de A "));
@@ -96,6 +97,14 @@ public class GCMixto {
         }
         //Se muestra la funcion 
         JOptionPane.showMessageDialog(null, fun);
+        altura_cuadradotemp = IdentfiDecreCreci ();
+        
+        if(altura_cuadradotemp<0){
+            altura_cuadradotemp = altura_cuadradotemp * (-1);
+            esnegativa = true; 
+        }
+        
+        
 //Generador de numeros aleatorios
         do {
 //Ecuacuion del generador mixto
@@ -104,32 +113,43 @@ public class GCMixto {
 // contador para saber el perido
 
             cont = cont + 1;
-            if ((cont % 2) == 0) {
+//            if ((cont % 2) == 0) {
                 //Normalizar numeros en X    
-            double numero_en_x = normaliza_en_x(fmayor, fmenor,(x0/m));
-            double calculo   =  calculavalor(numero_en_x, array, signo);
+         double numero_en_x = normaliza_en_x(fmayor, fmenor,(x0/m));
+         double calculo   =  calculavalor(numero_en_x, array, signo);
 //            double calculo = calculavalor((x0 / m), array, signo);
             resultado = 0;
             x.add(numero_en_x);
 //            x.add(x0/m);
-                x_replace.add(calculo);
-            } else {
-         altura_cuadradotemp = IdentfiDecreCreci ();
+         x_replace.add(calculo);
+//            } else {
         resultado = 0;
       double numero_en_y = normaliza_en_y(altura_cuadradotemp,0,(x0/m));
         resultado = 0;
       y.add(numero_en_y);
+      
 //        y.add(x0 / m);
-    altura_cuadradotemp = 0;
-            }
+//    altura_cuadradotemp = 0;
+//            }
 //  se valida que no se quede en un loop 
             if (validacion == x0 || cont == m) {
                 x0 = semilla;
                 indeter = false;
             }
         } while (x0 != semilla);
-//         Collections.reverse(y);
+         Collections.reverse(y);
         System.out.println("El periodo total es:" + cont);
+        
+        
+        if(esnegativa){
+            for (int i = 0; i < x_replace.size(); i++) {
+                double val = x_replace.get(i)*-1;
+                x_replace.set(i, val);
+                
+            }
+        }
+        
+        
 
         for (int i = 0; i < x_replace.size(); i++) {
             if (y.get(i) < x_replace.get(i)) {
@@ -141,11 +161,13 @@ public class GCMixto {
         System.out.println(bajocurva);
         
       altura_cuadrado = IdentfiDecreCreci();
+       if(altura_cuadrado<0){
+            altura_cuadrado = altura_cuadrado * (-1);
+        }  
         
         
-        
-        System.out.println(bajocurva + "/" + (cont / 2));
-        result = ((bajocurva / (cont / 2)) * (altura_cuadrado*(fmayor-fmenor)));// (altodelacurva*(mayor-menor))
+        System.out.println(bajocurva + "/" + cont);
+        result = ((bajocurva / cont) * (altura_cuadrado*(fmayor-fmenor)));// (altodelacurva*(mayor-menor))
         // Se imprime el resultado
         System.out.println(result);
 
@@ -216,12 +238,15 @@ public class GCMixto {
         resultado = 0;
         double resultfmenor = calculavalor(fmenor,array,signo);
         resultado = 0;
-        if(resultfmenor<resultfmayor){
+      
+        if(resultfmenor<resultfmayor && resultfmenor >= 0){
          resultmayo = resultfmayor;   
         }else{
           resultmayo = resultfmenor;   
         }
+       
         
+    
         return resultmayo;
     }
     
