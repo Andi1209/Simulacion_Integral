@@ -26,6 +26,7 @@ public class GCMixto {
     int a1 = 0;
     double fmenor=0;
     double fmayor = 0;
+    boolean esnegativa = false;
 
 
     public void Validar_periodo_mixto() {
@@ -46,7 +47,7 @@ public class GCMixto {
         double bajocurva = 0;
         double arribacurva = 0;
         double result = 0;
-        boolean esnegativa = false;
+//        boolean esnegativa = false;
 
         //Se solicitan los datos
         a = Double.parseDouble(JOptionPane.showInputDialog("Introdusca el valor de A "));
@@ -99,10 +100,10 @@ public class GCMixto {
         JOptionPane.showMessageDialog(null, fun);
         altura_cuadradotemp = IdentfiDecreCreci ();
         
-        if(altura_cuadradotemp<0){
-            altura_cuadradotemp = altura_cuadradotemp * (-1);
-            esnegativa = true; 
-        }
+//        if(altura_cuadradotemp<0){
+//            altura_cuadradotemp = altura_cuadradotemp * (-1);
+//            esnegativa = true; 
+//        }
         
         
 //Generador de numeros aleatorios
@@ -161,10 +162,7 @@ public class GCMixto {
         System.out.println(bajocurva);
         
       altura_cuadrado = IdentfiDecreCreci();
-       if(altura_cuadrado<0){
-            altura_cuadrado = altura_cuadrado * (-1);
-        }  
-        
+ 
         
         System.out.println(bajocurva + "/" + cont);
         result = ((bajocurva / cont) * (altura_cuadrado*(fmayor-fmenor)));// (altodelacurva*(mayor-menor))
@@ -238,6 +236,17 @@ public class GCMixto {
         resultado = 0;
         double resultfmenor = calculavalor(fmenor,array,signo);
         resultado = 0;
+        
+        
+          if(resultfmayor<0){
+            resultfmayor = resultfmayor * (-1);
+            esnegativa = true;
+        }  
+          if(resultfmenor<0){
+            resultfmenor = resultfmenor * (-1);
+            esnegativa = true;
+        }  
+        
       
         if(resultfmenor<resultfmayor && resultfmenor >= 0){
          resultmayo = resultfmayor;   
